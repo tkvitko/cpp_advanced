@@ -1,0 +1,9 @@
+/Users/tkvitko/c/netology/cpp_advanced/testing_catch2_linked_list_01/testing_catch2_linked_list_01/CMakeFiles/List-test.dir
+/Users/tkvitko/c/netology/cpp_advanced/testing_catch2_linked_list_01/testing_catch2_linked_list_01/CMakeFiles/edit_cache.dir
+/Users/tkvitko/c/netology/cpp_advanced/testing_catch2_linked_list_01/testing_catch2_linked_list_01/CMakeFiles/rebuild_cache.dir
+/Users/tkvitko/c/netology/cpp_advanced/testing_catch2_linked_list_01/testing_catch2_linked_list_01/Catch2-build/CMakeFiles/edit_cache.dir
+/Users/tkvitko/c/netology/cpp_advanced/testing_catch2_linked_list_01/testing_catch2_linked_list_01/Catch2-build/CMakeFiles/rebuild_cache.dir
+/Users/tkvitko/c/netology/cpp_advanced/testing_catch2_linked_list_01/testing_catch2_linked_list_01/Catch2-build/src/CMakeFiles/Catch2.dir
+/Users/tkvitko/c/netology/cpp_advanced/testing_catch2_linked_list_01/testing_catch2_linked_list_01/Catch2-build/src/CMakeFiles/Catch2WithMain.dir
+/Users/tkvitko/c/netology/cpp_advanced/testing_catch2_linked_list_01/testing_catch2_linked_list_01/Catch2-build/src/CMakeFiles/edit_cache.dir
+/Users/tkvitko/c/netology/cpp_advanced/testing_catch2_linked_list_01/testing_catch2_linked_list_01/Catch2-build/src/CMakeFiles/rebuild_cache.dir
