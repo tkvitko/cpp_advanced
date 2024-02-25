@@ -40,6 +40,11 @@ public:
         delete[] this->ptr;
     }
     
+    // запрет конструктора копирования
+    SmartArray(const SmartArray&) = delete;
+    // запрет оператора присваивания
+    SmartArray& operator=(const SmartArray&) = delete;
+    
     void add_element(int elem) {
         if (this->next_free_position < this->size) {
             this->ptr[this->next_free_position] = elem;
@@ -51,7 +56,7 @@ public:
     }
     
     int get_element(int idx) {
-        if (idx < this->size) {
+        if (0 <= idx < this->next_free_position) {
             return this->ptr[idx];
         } else {
             throw NoSuchElement();

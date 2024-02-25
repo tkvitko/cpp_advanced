@@ -35,19 +35,39 @@ public:
         this->ptr = new int[size];
     }
     
-    SmartArray(const SmartArray &obj) {
-        // Copy Constructor
-        delete[] this->ptr; // очистка памяти от старых данных первого объекта
-        this->ptr = new int[obj.size];  // выделение новой памяти для новых данных первого объекта
+//    SmartArray(const SmartArray& obj) {
+//        // Copy Constructor
+//        delete[] this->ptr; // очистка памяти от старых данных первого объекта
+//        this->ptr = new int[obj.size];  // выделение новой памяти для новых данных первого объекта
+//
+//        this->size = obj.size;
+//        this->next_free_position = obj.next_free_position;
+//
+//        // перенос новых данных (из второго объекта) в первый объект
+//        for (int i = 0; i < obj.size; ++i) {
+//            this->ptr[i] = obj.ptr[i];
+//        }
+//    }
+    
+    // оператор присваивания
+    SmartArray& operator=(const SmartArray& obj) {
+        if (&obj == this) {
+            return *this;
+        } else {
         
-        this->size = obj.size;
-        this->next_free_position = obj.next_free_position;
-        
-        // перенос новых данных (из второго объекта) в первый объект
-        for (int i = 0; i < obj.size; ++i) {
-            this->ptr[i] = obj.ptr[i];
+            delete[] this->ptr; // очистка памяти от старых данных первого объекта
+            this->ptr = new int[obj.size];  // выделение новой памяти для новых данных первого объекта
+            
+            this->size = obj.size;
+            this->next_free_position = obj.next_free_position;
+            
+            // перенос новых данных (из второго объекта) в первый объект
+            for (int i = 0; i < obj.size; ++i) {
+                this->ptr[i] = obj.ptr[i];
+            }
+            return *this;
         }
-    }
+    };
     
     ~SmartArray() {
         delete[] this->ptr;
@@ -64,7 +84,7 @@ public:
     }
     
     int get_element(int idx) {
-        if (idx < this->size) {
+        if (0 <= idx < this->next_free_position) {
             return this->ptr[idx];
         } else {
             throw NoSuchElement();
