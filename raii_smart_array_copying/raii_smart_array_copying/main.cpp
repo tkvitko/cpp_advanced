@@ -35,35 +35,34 @@ public:
         this->ptr = new int[size];
     }
     
-//    SmartArray(const SmartArray& obj) {
-//        // Copy Constructor
-//        delete[] this->ptr; // очистка памяти от старых данных первого объекта
-//        this->ptr = new int[obj.size];  // выделение новой памяти для новых данных первого объекта
-//
-//        this->size = obj.size;
-//        this->next_free_position = obj.next_free_position;
-//
-//        // перенос новых данных (из второго объекта) в первый объект
-//        for (int i = 0; i < obj.size; ++i) {
-//            this->ptr[i] = obj.ptr[i];
-//        }
-//    }
+    // оператор копирования
+    SmartArray(const SmartArray& other) {
+        this->ptr = new int[other.size];  // выделение новой памяти для новых данных первого объекта
+
+        this->size = other.size;
+        this->next_free_position = other.next_free_position;
+
+        // перенос новых данных (из второго объекта) в первый объект
+        for (int i = 0; i < other.size; ++i) {
+            this->ptr[i] = other.ptr[i];
+        }
+    }
     
     // оператор присваивания
-    SmartArray& operator=(const SmartArray& obj) {
-        if (&obj == this) {
+    SmartArray& operator=(const SmartArray& other) {
+        if (&other == this) {
             return *this;
         } else {
         
             delete[] this->ptr; // очистка памяти от старых данных первого объекта
-            this->ptr = new int[obj.size];  // выделение новой памяти для новых данных первого объекта
+            this->ptr = new int[other.size];  // выделение новой памяти для новых данных первого объекта
             
-            this->size = obj.size;
-            this->next_free_position = obj.next_free_position;
+            this->size = other.size;
+            this->next_free_position = other.next_free_position;
             
             // перенос новых данных (из второго объекта) в первый объект
-            for (int i = 0; i < obj.size; ++i) {
-                this->ptr[i] = obj.ptr[i];
+            for (int i = 0; i < other.size; ++i) {
+                this->ptr[i] = other.ptr[i];
             }
             return *this;
         }
@@ -94,6 +93,7 @@ public:
 
 int main(int argc, const char * argv[]) {
     
+    // проверка работы оператора присваивания
     SmartArray arr(5);
     arr.add_element(1);
     arr.add_element(4);
@@ -104,5 +104,10 @@ int main(int argc, const char * argv[]) {
     new_array.add_element(34);
 
     arr = new_array;
+    
+    // проверка работы оператора копирования
+    SmartArray arr2(3);
+    SmartArray arr3(arr2);
+    
     return 0;
 }
