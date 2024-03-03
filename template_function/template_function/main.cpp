@@ -13,9 +13,9 @@ INPUT sqrt(INPUT number) {
     return number * number;
 }
 
-template <>
-std::vector<int> sqrt(std::vector<int> numbers) {
-    std::vector<int> result;
+template <typename VECTOR_VALUE_TYPE>
+std::vector<VECTOR_VALUE_TYPE> sqrt(std::vector<VECTOR_VALUE_TYPE> numbers) {
+    std::vector<VECTOR_VALUE_TYPE> result;
     for (int i = 0; i < numbers.size(); ++i) {
         result.push_back(numbers[i] * numbers[i]);
     }

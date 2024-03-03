@@ -8,50 +8,31 @@
 #include <iostream>
 #include <vector>
 
-class get_sum {
+class analyser {
 private:
-    std::vector<int> source;
+    int divider;
     int sum;
-    
-public:
-    get_sum(std::vector<int> source_) : source(source_), sum(0) {}
-    
-    int operator()() {
-        for (auto elem : source) {
-            if (elem % 3 == 0) {
-                sum += elem;
-            }
-        }
-        return this->sum;
-    }
-};
-
-class get_count {
-private:
-    std::vector<int> source;
     int count;
     
 public:
-    get_count(std::vector<int> source_) : source(source_), count(0) {}
+    analyser(int divider_) : divider(divider_), sum(0), count(0) {}
     
-    int operator()() {
-        for (auto elem : source) {
-            if (elem % 3 == 0) {
-                count++;
-            }
+    void operator()(int elem) {
+        if (elem % divider == 0) {
+            sum += elem;
+            count++;
         }
-        return this->count;
     }
+    
+    int get_sum() { return this->sum; }
+    int get_count() { return this->count; }
 };
 
 int main(int argc, const char * argv[]) {
     std::vector<int> test_vector = {4, 1, 3, 6, 25, 54};
-    get_sum gs(test_vector);
-    int res = gs();
-    std::cout << res << std::endl;
-    
-    get_count gc(test_vector);
-    int res2 = gc();
-    std::cout << res2 << std::endl;
+    analyser gs = analyser(3);
+    gs = std::for_each(test_vector.begin(), test_vector.end(), gs);
+    std::cout << "[OUT]: get_sum() = " << gs.get_sum() << "\n";
+    std::cout << "[OUT]: get_count() = " << gs.get_count() << "\n";
     return 0;
 }
