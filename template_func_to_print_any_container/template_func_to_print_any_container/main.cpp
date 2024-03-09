@@ -13,8 +13,8 @@
 
 template <typename CONT>
 void print_container(CONT& cont) {
-    auto current = cont.begin();
-    auto end = cont.end();
+    auto current = cont.cbegin();
+    auto end = cont.cend();
     for (; current != end; ++current) {
         std::cout << *current << " ";
     }
