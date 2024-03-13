@@ -42,18 +42,18 @@ public:
     }
     
     // конструктор перемещения
-    BigInteger(BigInteger&& other) {
-        this->number = other.number;
+    BigInteger(BigInteger&& other) noexcept {
+        this->number = std::move(other.number);
         //other.number = nullptr; // no viable overloaded '='
         this->size = other.size;
     }
     
     // перемещающий оператор присваивания
-    BigInteger& operator=(BigInteger&& other) {
+    BigInteger& operator=(BigInteger&& other) noexcept {
         if (this == &other) {
             return *this;
         };
-        this->number = other.number;
+        this->number = std::move(other.number);
         //other.number = nullptr; // no viable overloaded '='
         this->size = other.size;
         return *this;
@@ -88,7 +88,7 @@ public:
             }
         };
         
-        // отдельно складываем цифру, и если перешли порядок, увеличиваем его
+        // отдельно складываем первые цифры, и если перешли порядок, увеличиваем его
         result[0] += this->number[0] + other.number[0];
         if (result[0] > 9) {
             result[0] -= 10;
@@ -115,7 +115,7 @@ public:
             }
         };
         
-        // отдельно складываем цифру, и если перешли порядок, увеличиваем его
+        // отдельно умножаем первые цифры, и если перешли порядок, увеличиваем его
         result[0] += this->number[0] * other;
         if (result[0] > 9) {
             int second_digit = result[0] % 10;
