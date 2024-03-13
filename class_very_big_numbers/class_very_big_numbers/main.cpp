@@ -139,13 +139,11 @@ std::ostream& operator<<(std::ostream& stream, BigInteger& number) {
 };
 
 int main(int argc, const char * argv[]) {
-    auto number1 = BigInteger("188");
-//    std::cout << number1;
+    auto number1 = BigInteger("114575");
     auto number2 = BigInteger("78524");
-//    std::cout << number2;
-//    auto result = number1 + number2;
-    auto result = number1 * 5;
-//    std::cout << result; // 193099
+    auto result = number1 + number2;
+    auto multi = number1 * 5;
     std::cout << result;
+    std::cout << multi;
     return 0;
 }
